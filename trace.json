@@ -1,0 +1,1184 @@
+{
+  "version": 1,
+  "source": "example.txt",
+  "segments": [
+    {
+      "id": 0,
+      "label": "A",
+      "start": [
+        0.0,
+        2.0
+      ],
+      "end": [
+        10.0,
+        8.0
+      ],
+      "start_exact": [
+        "0",
+        "2"
+      ],
+      "end_exact": [
+        "10",
+        "8"
+      ]
+    },
+    {
+      "id": 1,
+      "label": "B",
+      "start": [
+        1.0,
+        8.0
+      ],
+      "end": [
+        11.0,
+        2.0
+      ],
+      "start_exact": [
+        "1",
+        "8"
+      ],
+      "end_exact": [
+        "11",
+        "2"
+      ]
+    },
+    {
+      "id": 2,
+      "label": "C",
+      "start": [
+        2.0,
+        5.0
+      ],
+      "end": [
+        4.0,
+        5.0
+      ],
+      "start_exact": [
+        "2",
+        "5"
+      ],
+      "end_exact": [
+        "4",
+        "5"
+      ]
+    },
+    {
+      "id": 3,
+      "label": "D",
+      "start": [
+        3.0,
+        10.0
+      ],
+      "end": [
+        12.0,
+        10.0
+      ],
+      "start_exact": [
+        "3",
+        "10"
+      ],
+      "end_exact": [
+        "12",
+        "10"
+      ]
+    }
+  ],
+  "snapshots": [
+    {
+      "event": null,
+      "sweep_x": null,
+      "active_before": [],
+      "active_after": [],
+      "pending_events": [
+        {
+          "type": "start",
+          "point": [
+            0.0,
+            2.0
+          ],
+          "segment_ids": [
+            0
+          ],
+          "point_exact": [
+            "0",
+            "2"
+          ]
+        },
+        {
+          "type": "start",
+          "point": [
+            1.0,
+            8.0
+          ],
+          "segment_ids": [
+            1
+          ],
+          "point_exact": [
+            "1",
+            "8"
+          ]
+        },
+        {
+          "type": "start",
+          "point": [
+            2.0,
+            5.0
+          ],
+          "segment_ids": [
+            2
+          ],
+          "point_exact": [
+            "2",
+            "5"
+          ]
+        },
+        {
+          "type": "start",
+          "point": [
+            3.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "3",
+            "10"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            4.0,
+            5.0
+          ],
+          "segment_ids": [
+            2
+          ],
+          "point_exact": [
+            "4",
+            "5"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            10.0,
+            8.0
+          ],
+          "segment_ids": [
+            0
+          ],
+          "point_exact": [
+            "10",
+            "8"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            11.0,
+            2.0
+          ],
+          "segment_ids": [
+            1
+          ],
+          "point_exact": [
+            "11",
+            "2"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            12.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "12",
+            "10"
+          ]
+        }
+      ],
+      "intersections": [],
+      "actions": [],
+      "step": 0,
+      "explanation": "Queue all segment endpoints. No segments are active yet."
+    },
+    {
+      "event": {
+        "type": "start",
+        "point": [
+          0.0,
+          2.0
+        ],
+        "segment_ids": [
+          0
+        ],
+        "point_exact": [
+          "0",
+          "2"
+        ]
+      },
+      "sweep_x": 0.0,
+      "active_before": [],
+      "active_after": [
+        0
+      ],
+      "pending_events": [
+        {
+          "type": "start",
+          "point": [
+            1.0,
+            8.0
+          ],
+          "segment_ids": [
+            1
+          ],
+          "point_exact": [
+            "1",
+            "8"
+          ]
+        },
+        {
+          "type": "start",
+          "point": [
+            2.0,
+            5.0
+          ],
+          "segment_ids": [
+            2
+          ],
+          "point_exact": [
+            "2",
+            "5"
+          ]
+        },
+        {
+          "type": "start",
+          "point": [
+            3.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "3",
+            "10"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            4.0,
+            5.0
+          ],
+          "segment_ids": [
+            2
+          ],
+          "point_exact": [
+            "4",
+            "5"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            10.0,
+            8.0
+          ],
+          "segment_ids": [
+            0
+          ],
+          "point_exact": [
+            "10",
+            "8"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            11.0,
+            2.0
+          ],
+          "segment_ids": [
+            1
+          ],
+          "point_exact": [
+            "11",
+            "2"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            12.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "12",
+            "10"
+          ]
+        }
+      ],
+      "intersections": [],
+      "actions": [
+        {
+          "type": "insert",
+          "segment_ids": [
+            0
+          ]
+        }
+      ],
+      "step": 1,
+      "explanation": "Insert A into the active order."
+    },
+    {
+      "event": {
+        "type": "start",
+        "point": [
+          1.0,
+          8.0
+        ],
+        "segment_ids": [
+          1
+        ],
+        "point_exact": [
+          "1",
+          "8"
+        ]
+      },
+      "sweep_x": 1.0,
+      "active_before": [
+        0
+      ],
+      "active_after": [
+        1,
+        0
+      ],
+      "pending_events": [
+        {
+          "type": "start",
+          "point": [
+            2.0,
+            5.0
+          ],
+          "segment_ids": [
+            2
+          ],
+          "point_exact": [
+            "2",
+            "5"
+          ]
+        },
+        {
+          "type": "start",
+          "point": [
+            3.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "3",
+            "10"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            4.0,
+            5.0
+          ],
+          "segment_ids": [
+            2
+          ],
+          "point_exact": [
+            "4",
+            "5"
+          ]
+        },
+        {
+          "type": "intersection",
+          "point": [
+            5.5,
+            5.3
+          ],
+          "segment_ids": [
+            0,
+            1
+          ],
+          "point_exact": [
+            "11/2",
+            "53/10"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            10.0,
+            8.0
+          ],
+          "segment_ids": [
+            0
+          ],
+          "point_exact": [
+            "10",
+            "8"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            11.0,
+            2.0
+          ],
+          "segment_ids": [
+            1
+          ],
+          "point_exact": [
+            "11",
+            "2"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            12.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "12",
+            "10"
+          ]
+        }
+      ],
+      "intersections": [],
+      "actions": [
+        {
+          "type": "insert",
+          "segment_ids": [
+            1
+          ]
+        },
+        {
+          "type": "check",
+          "segment_ids": [
+            0,
+            1
+          ],
+          "point": [
+            5.5,
+            5.3
+          ],
+          "result": "intersection",
+          "point_exact": [
+            "11/2",
+            "53/10"
+          ]
+        },
+        {
+          "type": "schedule",
+          "segment_ids": [
+            0,
+            1
+          ],
+          "point": [
+            5.5,
+            5.3
+          ],
+          "point_exact": [
+            "11/2",
+            "53/10"
+          ]
+        }
+      ],
+      "step": 2,
+      "explanation": "Insert B into the active order. Check neighbors A/B: an intersection exists. Schedule the crossing of A/B at (5.5, 5.3)."
+    },
+    {
+      "event": {
+        "type": "start",
+        "point": [
+          2.0,
+          5.0
+        ],
+        "segment_ids": [
+          2
+        ],
+        "point_exact": [
+          "2",
+          "5"
+        ]
+      },
+      "sweep_x": 2.0,
+      "active_before": [
+        1,
+        0
+      ],
+      "active_after": [
+        1,
+        2,
+        0
+      ],
+      "pending_events": [
+        {
+          "type": "start",
+          "point": [
+            3.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "3",
+            "10"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            4.0,
+            5.0
+          ],
+          "segment_ids": [
+            2
+          ],
+          "point_exact": [
+            "4",
+            "5"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            10.0,
+            8.0
+          ],
+          "segment_ids": [
+            0
+          ],
+          "point_exact": [
+            "10",
+            "8"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            11.0,
+            2.0
+          ],
+          "segment_ids": [
+            1
+          ],
+          "point_exact": [
+            "11",
+            "2"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            12.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "12",
+            "10"
+          ]
+        }
+      ],
+      "intersections": [],
+      "actions": [
+        {
+          "type": "insert",
+          "segment_ids": [
+            2
+          ]
+        },
+        {
+          "type": "cancel",
+          "segment_ids": [
+            0,
+            1
+          ],
+          "point": [
+            5.5,
+            5.3
+          ],
+          "point_exact": [
+            "11/2",
+            "53/10"
+          ]
+        },
+        {
+          "type": "check",
+          "segment_ids": [
+            1,
+            2
+          ],
+          "point": null,
+          "result": "no_intersection"
+        },
+        {
+          "type": "check",
+          "segment_ids": [
+            0,
+            2
+          ],
+          "point": null,
+          "result": "no_intersection"
+        }
+      ],
+      "step": 3,
+      "explanation": "Insert C into the active order. Cancel the queued crossing of A/B; they are no longer neighbors. Check neighbors B/C: no intersection within both segments. Check neighbors A/C: no intersection within both segments."
+    },
+    {
+      "event": {
+        "type": "start",
+        "point": [
+          3.0,
+          10.0
+        ],
+        "segment_ids": [
+          3
+        ],
+        "point_exact": [
+          "3",
+          "10"
+        ]
+      },
+      "sweep_x": 3.0,
+      "active_before": [
+        1,
+        2,
+        0
+      ],
+      "active_after": [
+        3,
+        1,
+        2,
+        0
+      ],
+      "pending_events": [
+        {
+          "type": "end",
+          "point": [
+            4.0,
+            5.0
+          ],
+          "segment_ids": [
+            2
+          ],
+          "point_exact": [
+            "4",
+            "5"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            10.0,
+            8.0
+          ],
+          "segment_ids": [
+            0
+          ],
+          "point_exact": [
+            "10",
+            "8"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            11.0,
+            2.0
+          ],
+          "segment_ids": [
+            1
+          ],
+          "point_exact": [
+            "11",
+            "2"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            12.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "12",
+            "10"
+          ]
+        }
+      ],
+      "intersections": [],
+      "actions": [
+        {
+          "type": "insert",
+          "segment_ids": [
+            3
+          ]
+        },
+        {
+          "type": "check",
+          "segment_ids": [
+            1,
+            3
+          ],
+          "point": null,
+          "result": "no_intersection"
+        }
+      ],
+      "step": 4,
+      "explanation": "Insert D into the active order. Check neighbors B/D: no intersection within both segments."
+    },
+    {
+      "event": {
+        "type": "end",
+        "point": [
+          4.0,
+          5.0
+        ],
+        "segment_ids": [
+          2
+        ],
+        "point_exact": [
+          "4",
+          "5"
+        ]
+      },
+      "sweep_x": 4.0,
+      "active_before": [
+        3,
+        1,
+        2,
+        0
+      ],
+      "active_after": [
+        3,
+        1,
+        0
+      ],
+      "pending_events": [
+        {
+          "type": "intersection",
+          "point": [
+            5.5,
+            5.3
+          ],
+          "segment_ids": [
+            0,
+            1
+          ],
+          "point_exact": [
+            "11/2",
+            "53/10"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            10.0,
+            8.0
+          ],
+          "segment_ids": [
+            0
+          ],
+          "point_exact": [
+            "10",
+            "8"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            11.0,
+            2.0
+          ],
+          "segment_ids": [
+            1
+          ],
+          "point_exact": [
+            "11",
+            "2"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            12.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "12",
+            "10"
+          ]
+        }
+      ],
+      "intersections": [],
+      "actions": [
+        {
+          "type": "remove",
+          "segment_ids": [
+            2
+          ]
+        },
+        {
+          "type": "check",
+          "segment_ids": [
+            0,
+            1
+          ],
+          "point": [
+            5.5,
+            5.3
+          ],
+          "result": "intersection",
+          "point_exact": [
+            "11/2",
+            "53/10"
+          ]
+        },
+        {
+          "type": "schedule",
+          "segment_ids": [
+            0,
+            1
+          ],
+          "point": [
+            5.5,
+            5.3
+          ],
+          "point_exact": [
+            "11/2",
+            "53/10"
+          ]
+        }
+      ],
+      "step": 5,
+      "explanation": "Remove C from the active order. Check neighbors A/B: an intersection exists. Schedule the crossing of A/B at (5.5, 5.3)."
+    },
+    {
+      "event": {
+        "type": "intersection",
+        "point": [
+          5.5,
+          5.3
+        ],
+        "segment_ids": [
+          0,
+          1
+        ],
+        "point_exact": [
+          "11/2",
+          "53/10"
+        ]
+      },
+      "sweep_x": 5.5,
+      "active_before": [
+        3,
+        1,
+        0
+      ],
+      "active_after": [
+        3,
+        0,
+        1
+      ],
+      "pending_events": [
+        {
+          "type": "end",
+          "point": [
+            10.0,
+            8.0
+          ],
+          "segment_ids": [
+            0
+          ],
+          "point_exact": [
+            "10",
+            "8"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            11.0,
+            2.0
+          ],
+          "segment_ids": [
+            1
+          ],
+          "point_exact": [
+            "11",
+            "2"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            12.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "12",
+            "10"
+          ]
+        }
+      ],
+      "intersections": [
+        [
+          5.5,
+          5.3
+        ]
+      ],
+      "actions": [
+        {
+          "type": "swap",
+          "segment_ids": [
+            0,
+            1
+          ]
+        },
+        {
+          "type": "report",
+          "point": [
+            5.5,
+            5.3
+          ],
+          "point_exact": [
+            "11/2",
+            "53/10"
+          ]
+        },
+        {
+          "type": "check",
+          "segment_ids": [
+            0,
+            3
+          ],
+          "point": null,
+          "result": "no_intersection"
+        }
+      ],
+      "step": 6,
+      "explanation": "Swap A/B in the active order. Report the intersection at (5.5, 5.3). Check neighbors A/D: no intersection within both segments."
+    },
+    {
+      "event": {
+        "type": "end",
+        "point": [
+          10.0,
+          8.0
+        ],
+        "segment_ids": [
+          0
+        ],
+        "point_exact": [
+          "10",
+          "8"
+        ]
+      },
+      "sweep_x": 10.0,
+      "active_before": [
+        3,
+        0,
+        1
+      ],
+      "active_after": [
+        3,
+        1
+      ],
+      "pending_events": [
+        {
+          "type": "end",
+          "point": [
+            11.0,
+            2.0
+          ],
+          "segment_ids": [
+            1
+          ],
+          "point_exact": [
+            "11",
+            "2"
+          ]
+        },
+        {
+          "type": "end",
+          "point": [
+            12.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "12",
+            "10"
+          ]
+        }
+      ],
+      "intersections": [
+        [
+          5.5,
+          5.3
+        ]
+      ],
+      "actions": [
+        {
+          "type": "remove",
+          "segment_ids": [
+            0
+          ]
+        },
+        {
+          "type": "check",
+          "segment_ids": [
+            1,
+            3
+          ],
+          "point": null,
+          "result": "no_intersection"
+        }
+      ],
+      "step": 7,
+      "explanation": "Remove A from the active order. Check neighbors B/D: no intersection within both segments."
+    },
+    {
+      "event": {
+        "type": "end",
+        "point": [
+          11.0,
+          2.0
+        ],
+        "segment_ids": [
+          1
+        ],
+        "point_exact": [
+          "11",
+          "2"
+        ]
+      },
+      "sweep_x": 11.0,
+      "active_before": [
+        3,
+        1
+      ],
+      "active_after": [
+        3
+      ],
+      "pending_events": [
+        {
+          "type": "end",
+          "point": [
+            12.0,
+            10.0
+          ],
+          "segment_ids": [
+            3
+          ],
+          "point_exact": [
+            "12",
+            "10"
+          ]
+        }
+      ],
+      "intersections": [
+        [
+          5.5,
+          5.3
+        ]
+      ],
+      "actions": [
+        {
+          "type": "remove",
+          "segment_ids": [
+            1
+          ]
+        }
+      ],
+      "step": 8,
+      "explanation": "Remove B from the active order."
+    },
+    {
+      "event": {
+        "type": "end",
+        "point": [
+          12.0,
+          10.0
+        ],
+        "segment_ids": [
+          3
+        ],
+        "point_exact": [
+          "12",
+          "10"
+        ]
+      },
+      "sweep_x": 12.0,
+      "active_before": [
+        3
+      ],
+      "active_after": [],
+      "pending_events": [],
+      "intersections": [
+        [
+          5.5,
+          5.3
+        ]
+      ],
+      "actions": [
+        {
+          "type": "remove",
+          "segment_ids": [
+            3
+          ]
+        }
+      ],
+      "step": 9,
+      "explanation": "Remove D from the active order."
+    }
+  ],
+  "result": [
+    [
+      5.5,
+      5.3
+    ]
+  ],
+  "result_exact": [
+    [
+      "11/2",
+      "53/10"
+    ]
+  ]
+}

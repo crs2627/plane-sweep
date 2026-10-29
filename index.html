@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plane Sweep</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <h1>Plane Sweep</h1>
+  <p>
+    <label for="trace-file">Load trace:</label>
+    <input id="trace-file" type="file" accept=".json,application/json">
+    <span id="load-status" role="status">Loading...</span>
+  </p>
+
+  <div class="workspace">
+    <svg id="scene" viewBox="0 0 580 520" role="img" aria-labelledby="scene-title">
+      <title id="scene-title">Line segments and sweep line</title>
+      <g id="axes-layer"></g>
+      <g id="segments-layer"></g>
+      <g id="sweep-layer"></g>
+      <g id="intersections-layer"></g>
+      <g id="labels-layer"></g>
+    </svg>
+
+    <div>
+      <h2>Current event</h2>
+      <p id="current-event">None</p>
+
+      <h2>Event queue</h2>
+      <ol id="event-queue"></ol>
+      <p id="queue-empty">Empty</p>
+
+      <h2>Active segments (top to bottom)</h2>
+      <ol id="active-order"></ol>
+      <p id="status-empty">None</p>
+    </div>
+  </div>
+  <p>Blue: active. Orange: current event segments. Green dot: reported intersection.
+    Dashed line: sweep position. Active order is shown after the current event.</p>
+
+  <p>
+    <button id="next-button" type="button" disabled>Next</button>
+    <button id="reset-button" type="button" disabled>Reset</button>
+    <span id="step-count">No data loaded</span>
+  </p>
+
+  <h2>Explanation</h2>
+  <p id="explanation-text" aria-live="polite">No data loaded.</p>
+
+  <section aria-labelledby="pseudocode-title">
+    <h2 id="pseudocode-title">Pseudocode</h2>
+    <p id="pseudocode-status" aria-live="polite">No event selected.</p>
+    <pre id="pseudocode"><code><span id="code-initial">Q = all start and end events, ordered by x
+T = empty active order</span>
+while Q is not empty:
+    e = remove the next event from Q
+<span id="code-start">    if e is a start:
+        insert its segment into T</span>
+<span id="code-end">    if e is an end:
+        remove its segment from T</span>
+<span id="code-intersection">    if e is a crossing:
+        verify the pair is still scheduled, active, and adjacent
+        if valid, report the crossing and swap the pair in T</span>
+    cancel crossing events for destroyed adjacencies
+    check newly adjacent pairs
+    schedule their strictly future crossings, avoiding duplicates
+    record the resulting state for visualization</code></pre>
+    <p>The highlighted block corresponds to the displayed event.</p>
+  </section>
+
+  <hr>
+  <section aria-labelledby="background-title">
+    <h2 id="background-title">About this project</h2>
+    <p>Charlie Solari - CSCI 716</p>
+    <p>This application illustrates how a plane sweep finds intersections among line
+      segments. It connects each event to the event queue, the active segment order,
+      and the neighbor checks performed by the algorithm.</p>
+
+    <h2>Problem and assumptions</h2>
+    <p>The input is a set of line segments in the plane; the output is the set of
+      intersection points. The explanation below assumes nonzero, nonvertical
+      segments, no overlapping segments, no endpoint contacts, no three segments
+      meeting at one point, and distinct x-coordinates for all events.</p>
+
+    <h2>How the sweep works</h2>
+    <p>A vertical line moves from left to right. The event queue contains endpoints
+      and discovered future crossings. The status structure contains active segments
+      in top-to-bottom order. Between events, this order does not change.</p>
+    <ul>
+      <li>At a start endpoint, insert the segment and check its immediate neighbors.</li>
+      <li>At an end endpoint, remove the segment and check the pair exposed across the gap.</li>
+      <li>At a crossing, report the point, swap the crossing pair, and check the new outer neighbors.</li>
+    </ul>
+    <p>Here the Python status structure is an AVL tree, and the event queue is an
+      indexed min-heap. Crossing events are canceled when their segments are no
+      longer adjacent. A pair is checked again if it becomes adjacent later.</p>
+    <p>The standard event cases are described in
+      <a href="https://courses.csail.mit.edu/6.854/19/Scribe/s27-sweepline/s27-sweepline.html">MIT's sweep-line lecture notes</a>;
+      this implementation sweeps left to right.</p>
+
+    <h2>Why checking neighbors is enough</h2>
+    <p><strong>Claim.</strong> Two segments crossing at an isolated interior point p
+      are adjacent immediately before the sweep reaches p.</p>
+    <p><strong>Proof sketch.</strong> Choose a sufficiently small disk around p that
+      contains no endpoints and meets no segments other than the crossing pair.
+      Such a disk exists because the input is finite and no third segment contains p.
+      Just to the left of p, both segments meet the sweep line inside this disk.
+      The vertical interval between those two intersections is also inside the disk,
+      so no third segment can lie between them. Therefore they are neighbors.</p>
+    <p>This is the neighbor lemma used in
+      <a href="https://jeffe.cs.illinois.edu/teaching/compgeom/2021/refs/Mount.pdf">David Mount's computational geometry notes</a>.
+      It does not mean that intersecting segments are neighbors throughout the sweep.</p>
+
+    <h2>Why no crossing is missed</h2>
+    <p>Maintain three invariants after each event:</p>
+    <ol>
+      <li>T gives the active order immediately to the right of the event.</li>
+      <li>Each adjacent pair with a strictly future crossing has that crossing queued.</li>
+      <li>All crossings at or to the left of the processed event have been reported.</li>
+    </ol>
+    <p>Initially T is empty and there are no earlier crossings. An insertion,
+      removal, or crossing changes only local adjacencies; updating those pairs
+      preserves the first two invariants. Suppose a crossing were missed. Immediately
+      before it, the neighbor lemma makes its segments adjacent. Their last adjacency
+      change must therefore have scheduled it, and it remains queued while they stay
+      adjacent. The queue cannot advance past it without processing it, contradicting
+      the supposed omission. Reported points come from actual segment-intersection
+      tests, so no false points are introduced.</p>
+    <p>For the event-invariant approach, see
+      <a href="https://www.cs.tulane.edu/~carola/teaching/cs6463/fall10/slides/sweepline.pdf">Carola Wenk's plane-sweep slides</a>.</p>
+
+    <h2>What the example demonstrates</h2>
+    <p>When B starts, the A/B crossing is scheduled. C then starts between A and B,
+      canceling that event. When C ends, A and B become neighbors again and their
+      crossing is rescheduled. At (5.5, 5.3), the algorithm reports the point and swaps
+      their order. Canceling an event changes the queue, not the geometric input.</p>
+
+    <h2>Running time</h2>
+    <p>Let n be the segment count and k the number of crossings under the assumptions
+      above. There are 2n endpoint events and k crossing events. Each event changes
+      a constant number of adjacencies. Balanced-tree and indexed-heap operations
+      cost O(log n), giving O((n + k) log n) time under constant-cost geometric
+      arithmetic. Immediate cancellation keeps only O(n) pending neighbor crossings;
+      the working structures use O(n) space, excluding O(k) stored output.</p>
+    <p>This is the standard bound discussed in
+      <a href="https://courses.csail.mit.edu/6.854/19/Scribe/s27-sweepline/s27-sweepline.html">MIT's lecture notes</a>.
+      Dense inputs can have k = Θ(n<sup>2</sup>), so this bound does not promise an improvement
+      over brute force on every input.</p>
+
+    <h2>Applications</h2>
+    <p>Finding segment intersections is useful when geometric data needs to be
+      combined or checked:</p>
+    <ul>
+      <li><strong>Geographic information systems:</strong> overlay map layers, such
+        as road and river networks, and find where their line segments cross.</li>
+      <li><strong>Computer-aided design:</strong> find intersections between polygon
+        boundaries as a step toward computing unions or intersections of shapes.</li>
+      <li><strong>Robotics:</strong> intersection tests can help determine whether a
+        proposed path crosses obstacle boundaries in a planar model.</li>
+    </ul>
+
+    <h2>References</h2>
+    <ul>
+      <li>CSCI 716 course slides and Assignment 2 implementation.</li>
+      <li><a href="https://courses.csail.mit.edu/6.854/19/Scribe/s27-sweepline/s27-sweepline.html">Aidan Downes, notes for David Karger's MIT 6.854 lecture: Sweep Line Algorithms</a>, segment-intersection section.</li>
+      <li><a href="https://jeffe.cs.illinois.edu/teaching/compgeom/2021/refs/Mount.pdf">David M. Mount, CMSC 754: Computational Geometry</a>, Spring 2020, line-segment intersection discussion.</li>
+      <li><a href="https://www.cs.tulane.edu/~carola/teaching/cs6463/fall10/slides/sweepline.pdf">Carola Wenk, Plane Sweep Algorithms and Segment Intersection</a>, September 1, 2010.</li>
+    </ul>
+  </section>
+</body>
+</html>

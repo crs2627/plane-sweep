@@ -1,0 +1,35 @@
+body {
+  margin: 20px;
+}
+
+.workspace {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+#scene {
+  width: 640px;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid black;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+#axes-layer text {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#pseudocode {
+  overflow-x: auto;
+}
+
+.current-code {
+  background: #fff2a8;
+  font-weight: bold;
+}
